@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 import io
 import base64
@@ -73,9 +72,9 @@ def get_output():
             base64_image = base64.b64encode(extracted_text)
             uploaded_image_url = upload_image(base64_image)
             client = Client('manaidu20011/a')
-            text = client.predict(image_path=None,
-                                  image_url=uploaded_image_url,
-                                  api_name='/predict')
+            extracted_text = client.predict(image_path=None,
+                    image_url=uploaded_image_url, api_name='/predict')
+            text = extracted_text
         except:
             text = 'Invalid Format'
             extracted_text = \
