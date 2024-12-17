@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import io
 import base64
-from gradio_client import Client, handle_file
+from gradio_client import Client
 import requests
 
 app = Flask(__name__)
