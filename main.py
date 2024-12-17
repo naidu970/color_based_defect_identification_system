@@ -4,6 +4,7 @@ import io
 import base64
 from gradio_client import Client
 import requests
+import Exception
 
 app = Flask(__name__)
 
@@ -77,8 +78,8 @@ def get_output():
             extracted_text = client.predict(image_path=None,
                     image_url=uploaded_image_url, api_name='/predict')
             text = extracted_text
-        except:
-            text = 'Invalid Format'
+        except Exception, e:
+            text = e
             extracted_text = \
                 'Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit'
             uploaded_image_url = ' '
