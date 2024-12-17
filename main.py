@@ -4,7 +4,7 @@ import io
 import base64
 from gradio_client import Client
 import requests
-import Exception
+
 
 app = Flask(__name__)
 
