@@ -55,7 +55,7 @@ def about_page():
 def process_edit():
     uploaded_image_url = request.form['uploaded_image_url']
     extracted_text = request.form['edited_text']
-    text = extracted_text
+    text = extracted_text.replace("\n", "<br>")
     return render_template('index.html', extracted_text=extracted_text,
                            uploaded_image_url=uploaded_image_url,
                            prediction=text)
@@ -76,7 +76,7 @@ def get_output():
             uploaded_image_url = upload_image(base64_image)
             client = Client('manaidu20011/a')
             extracted_text = client.predict(image_path=None,
-                    image_url=uploaded_image_url, api_name='/predict')
+                    image_url=uploaded_image_url, api_name='/predict').replace("\n", "<br>")
             text = extracted_text
         except Exception as e:
             text = e
