@@ -7,73 +7,84 @@ import requests
 app = Flask(__name__)
 
 
-
 def upload_image(image_data):
+
     # Your ImgBB API key
+
     api_key = '2523d847e1c1653a9a342bda87acb27d'
 
     # Endpoint URL for image upload
-    upload_url = "https://api.imgbb.com/1/upload"
+
+    upload_url = 'https://api.imgbb.com/1/upload'
 
     # Prepare the data for the POST request
-    payload = {
-        "key": api_key,
-        "image": image_data.decode('utf-8')  
-    }
+
+    payload = {'key': api_key, 'image': image_data.decode('utf-8')}
 
     # Make the POST request to upload the image
+
     response = requests.post(upload_url, payload)
 
     # Parse the JSON response
+
     json_response = response.json()
 
     if 'data' in json_response:
         image_url = json_response['data']['url']
         return image_url
     else:
-        return json_response.get('error', {}).get('message', 'Unknown error')
+        return json_response.get('error', {}).get('message',
+                'Unknown error')
 
 
 # routes
-@app.route("/", methods=['GET', 'POST'])
+
+@app.route('/', methods=['GET', 'POST'])
 def main():
-	return render_template("index.html")
+    return render_template('index.html')
 
-@app.route("/about")
+
+@app.route('/about')
 def about_page():
-	return "Naidu"
+    return 'Naidu'
 
-@app.route("/process_edit", methods=['POST'])
+
+@app.route('/process_edit', methods=['POST'])
 def process_edit():
-	uploaded_image_url = request.form['uploaded_image_url']
-	text = extracted_text
-	return render_template("index.html",  extracted_text =extracted_text ,uploaded_image_url=uploaded_image_url,prediction = text)
+    uploaded_image_url = request.form['uploaded_image_url']
+    text = extracted_text
+    return render_template('index.html', extracted_text=extracted_text,
+                           uploaded_image_url=uploaded_image_url,
+                           prediction=text)
 
 
-@app.route("/submit", methods = ['GET', 'POST'])
+@app.route('/submit', methods=['GET', 'POST'])
 def get_output():
-	text = "Upload image in any the following format : Png/Jpg/Jpeg"
-	extracted_text =" "
-	if request.method == 'POST':
-	
-		try :
-	
-			extracted_text = request.files['my_image']
-			extracted_text= extracted_text.stream.read()
-		
-			base64_image = base64.b64encode((extracted_text))
-            
-			uploaded_image_url = upload_image(base64_image)
-            client = Client("manaidu20011/a")
-			text = client.predict(image_path=None,image_url=uploaded_image_url,api_name="/predict")
-		except :
-			text = "Invalid Format"
-			extracted_text = "Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit"
-			uploaded_image_url =" "
-	
-	return render_template("index.html", extracted_text =extracted_text ,uploaded_image_url=uploaded_image_url,prediction = text)
+    text = 'Upload image in any the following format : Png/Jpg/Jpeg'
+    extracted_text = ' '
+    if request.method == 'POST':
 
+        try:
 
+            extracted_text = request.files['my_image']
+            extracted_text = extracted_text.stream.read()
 
-if __name__=="__main__":
+            base64_image = base64.b64encode(extracted_text)
+
+            uploaded_image_url = upload_image(base64_image)
+            client = Client('manaidu20011/a')
+            text = client.predict(image_path=None,
+                                  image_url=uploaded_image_url,
+                                  api_name='/predict')
+        except:
+            text = 'Invalid Format'
+            extracted_text = \
+                'Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit'
+            uploaded_image_url = ' '
+
+    return render_template('index.html', extracted_text=extracted_text,
+                           uploaded_image_url=uploaded_image_url,
+                           prediction=text)
+
+if __name__ == '__main__':
     app.run(debug=True)
