@@ -1,18 +1,9 @@
 from flask import Flask, render_template, request
-import requests
-from PIL import Image
 import io
 import base64
 from gradio_client import Client, handle_file
-
-
-import cv2
-import numpy as np
-from sklearn.cluster import KMeans
-import matplotlib.colors as mcolors
-
-
 import requests
+
 app = Flask(__name__)
 client = Client("manaidu20011/a")
 
