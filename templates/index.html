@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SnapSearch</title>
+  <title>Color Identification</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,8 +12,7 @@
 <body>
 
 <div class="container">
-  <h1 class="jumbotron bg-primary">SnapSearch</h1>
-  <h2> Image Question Answering using OCR Extraction and Text to Text generation model</h2>
+  <h1 class="jumbotron bg-primary">Color Identification</h1>
   <br><br>
   <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
 
@@ -37,22 +36,6 @@
 	<p> Answers : <i> {{prediction}} </i></p> -->
     <span style="font-size: 20; margin: 21px 0; display: block;">
       <p> Download File (lasts 24 hours): <a href="{{uploaded_image_url}}">{{uploaded_image_url}}</a> </p>
-      <!-- <p> Extracted Text  : {{extracted_text}} </p> -->
-
- 
-     <form action="/process_edit" method="post">
-      <p> Extracted Text  : </p> 
-    <input type="hidden" name="uploaded_image_url" value="{{ uploaded_image_url }}">
-    <input type="hidden" name="text" value="{{ prediction }}">
-    <textarea name="edited_text" rows="15" cols="100">{{ extracted_text }}</textarea>
-    <!-- <button type="submit">Submit</button> -->
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-success">Submit</button>
-      </div>
-    </div>
-</form>
-
 
 
 
