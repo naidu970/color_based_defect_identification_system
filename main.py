@@ -5,7 +5,6 @@ from gradio_client import Client, handle_file
 import requests
 
 app = Flask(__name__)
-client = Client("manaidu20011/a")
 
 
 
@@ -63,9 +62,10 @@ def get_output():
 			extracted_text= extracted_text.stream.read()
 		
 			base64_image = base64.b64encode((extracted_text))
-			uploaded_image_url = upload_image(base64_image)
             
-			result = client.predict(image_path=None,image_url=uploaded_image_url,api_name="/predict")
+			uploaded_image_url = upload_image(base64_image)
+            client = Client("manaidu20011/a")
+			text = client.predict(image_path=None,image_url=uploaded_image_url,api_name="/predict")
 		except :
 			text = "Invalid Format"
 			extracted_text = "Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit"
