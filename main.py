@@ -6,7 +6,6 @@ import base64
 from gradio_client import Client
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import matplotlib.colors as mcolors
 
@@ -222,25 +221,7 @@ def detect_all_colors(image_data, k=len(COLOR_NAMES.values())):
         output+=f"{percentage:.2f}%  Closest Color: {color_name}"+"\n"
     output+=f"Total: {total_percentage:.2f}%"
     return output
-    # list_c= np.array(list_c)
-    # normalized_colors = np.clip(list_c / 255.0, 0, 1)
-    # color_values = list(colour_name_list.values())
-    # color_data = np.array(color_values).reshape(1, -1)
-
-    # # Plot the heatmap
-    # plt.figure(figsize=(12, 5)) 
-    # plt.imshow(color_data, aspect='auto', interpolation='nearest', cmap='gray', 
-    #            extent=[0, len(colour_name_list), 0, 1])  # Using gray cmap, actual colors are set manually
-
-    # for i, (color, percentage) in enumerate(zip(normalized_colors, color_values)):
-    #     plt.gca().add_patch(plt.Rectangle((i, 0), 1, 1, color=color))  # Add colored rectangles
-    # plt.colorbar(label='Percentage (%)')
-    # plt.xticks(range(len(colour_name_list)), [i+"-"+str('{:.2f}'.format(k))+"%" for i,k in colour_name_list.items()], rotation=75, fontsize=8)
-    # plt.yticks([]) 
-    # plt.title(f"Color Distribution in Image (k={k} clusters)")
-    # plt.tight_layout()
-    # plt.show()
-
+ 
 
 
 
