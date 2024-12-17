@@ -32,13 +32,14 @@
 
 	{% if prediction %}
   <!-- <img src="{{img_path}}" height="1000px" width="1000px"> -->
-	<p> Answers : <i> {{prediction.replace("\n", "<br>")}} </i></p> -->
+    <!-- <p> Extracted Text  : <i> {{extracted_text}} </i></p>
+	<p> Answers : <i> {{prediction}} </i></p> -->
     <span style="font-size: 20; margin: 21px 0; display: block;">
       <p> Download File (lasts 24 hours): <a href="{{uploaded_image_url}}">{{uploaded_image_url}}</a> </p>
 
 
 
-      <p> Answers : {{prediction.replace("\n", "<br>")}} </p>
+      <p> Answers: <i>{{ prediction|safe }}</i> </p>
       </span>
 
 	{% endif %}
