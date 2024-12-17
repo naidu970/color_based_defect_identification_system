@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request
 import io
 import base64
@@ -52,6 +53,7 @@ def about_page():
 @app.route('/process_edit', methods=['POST'])
 def process_edit():
     uploaded_image_url = request.form['uploaded_image_url']
+    extracted_text = request.form['edited_text']
     text = extracted_text
     return render_template('index.html', extracted_text=extracted_text,
                            uploaded_image_url=uploaded_image_url,
@@ -68,9 +70,7 @@ def get_output():
 
             extracted_text = request.files['my_image']
             extracted_text = extracted_text.stream.read()
-
             base64_image = base64.b64encode(extracted_text)
-
             uploaded_image_url = upload_image(base64_image)
             client = Client('manaidu20011/a')
             text = client.predict(image_path=None,
