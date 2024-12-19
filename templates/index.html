@@ -25,7 +25,9 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-success">Submit</button>
+         <button type="submit" class="btn btn-success" id="submitButton" onclick="setAction('/submit')">Submit</button>
+        <button type="submit" class="btn btn-success" id="submitDefectButton" onclick="setAction('/submitDefect')">Submit Defect</button>
+        <button type="submit" class="btn btn-success" id="submitNotDefectButton" onclick="setAction('/submitnotDefect')">Submit Not Defect</button>
       </div>
     </div>
   </form>
