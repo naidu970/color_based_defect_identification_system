@@ -154,7 +154,7 @@ def del_data():
             client = Client("manaidu20011/cloud")
             result = client.predict(command="delete",api_name="/predict")
             extracted_text= "Data Removed"
-             text = extracted_text
+            text = extracted_text
             uploaded_image_url= ""
             
         except Exception as e:
