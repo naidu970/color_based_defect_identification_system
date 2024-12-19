@@ -92,7 +92,7 @@ def get_output():
                            uploaded_image_url=uploaded_image_url,
                            prediction=text)
 @app.route('/submitDefect', methods=['GET', 'POST'])
-def get_output():
+def submitDefect_get_output():
     text = 'Upload image in any the following format : Png/Jpg/Jpeg'
     extracted_text = ' '
     if request.method == 'POST':
@@ -122,7 +122,7 @@ def get_output():
                            uploaded_image_url=uploaded_image_url,
                            prediction=text)
 @app.route('/submitnotDefect', methods=['GET', 'POST'])
-def get_output():
+def submitnotDefect_get_output():
     text = 'Upload image in any the following format : Png/Jpg/Jpeg'
     extracted_text = ' '
     if request.method == 'POST':
