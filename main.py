@@ -103,7 +103,7 @@ def submitDefect_get_output():
             text = extracted_text
             client = Client("manaidu20011/cloud")
             result = client.predict(command=extracted_text.replace("\n",":")[:-1]+"1",api_name="/predict")
-            extracted_text = (result + extracted_text).replace("\n", "<br>")
+            extracted_text = (result+ "\n"+ extracted_text).replace("\n", "<br>")
             text= extracted_text
         except Exception as e:
             text = e
@@ -133,7 +133,7 @@ def submitnotDefect_get_output():
             text = extracted_text
             client = Client("manaidu20011/cloud")
             result = client.predict(command=extracted_text.replace("\n",":")[:-1]+"0",api_name="/predict")
-            extracted_text = (result + extracted_text).replace("\n", "<br>")
+            extracted_text = (result+"\n" + extracted_text).replace("\n", "<br>")
             text= extracted_text
         except Exception as e:
             text = e
