@@ -76,7 +76,7 @@ def get_output():
             uploaded_image_url = upload_image(base64_image)
             client = Client('manaidu20011/a')
             extracted_text = client.predict(image_path=None,
-                    image_url=uploaded_image_url, api_name='/predict').replace("\n", "<br>")
+                    image_url=uploaded_image_url, api_name='/predict')
             text = extracted_text
             client = Client("manaidu20011/cloud")
             extracted_text = "predict"+extracted_text.replace("\n",":")
