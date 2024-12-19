@@ -79,7 +79,8 @@ def get_output():
                     image_url=uploaded_image_url, api_name='/predict').replace("\n", "<br>")
             text = extracted_text
             client = Client("manaidu20011/cloud")
-            result = client.predict(command="predict"+(extracted_text.replace("\n",":"),api_name="/predict")
+            extracted_text = "predict"+extracted_text.replace("\n",":")
+            result = client.predict(command=extracted_text,api_name="/predict")
             extracted_text = result
             text= result
         except Exception as e:
