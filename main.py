@@ -144,6 +144,51 @@ def submitnotDefect_get_output():
     return render_template('index.html', extracted_text=extracted_text,
                            uploaded_image_url=uploaded_image_url,
                            prediction=text)
+@app.route('/del', methods=['GET', 'POST'])
+def del_data():
+    text = 'Upload image in any the following format : Png/Jpg/Jpeg'
+    extracted_text = ' '
+    if request.method == 'POST':
+
+        try:
+            client = Client("manaidu20011/cloud")
+            result = client.predict(command="delete",api_name="/predict")
+            extracted_text= "Data Removed"
+            prediction= extracted_text
+            uploaded_image_url= "None"
+            
+        except Exception as e:
+            text = e
+            extracted_text = \
+                'Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit'
+            uploaded_image_url = ''
+
+    return render_template('index.html', extracted_text=extracted_text,
+                           uploaded_image_url=uploaded_image_url,
+                           prediction=text)
+@app.route('/train', methods=['GET', 'POST'])
+def train_data():
+    text = 'Upload image in any the following format : Png/Jpg/Jpeg'
+    extracted_text = ' '
+    if request.method == 'POST':
+
+        try:
+            client = Client("manaidu20011/cloud")
+            result = client.predict(command="train",api_name="/predict")
+            extracted_text= "Succesfully Trained Model"
+            prediction= extracted_text
+            uploaded_image_url= ""
+            
+        except Exception as e:
+            text = e
+            extracted_text = \
+                'Upload image in any the following format : Png/Jpg/Jpeg or Enter Text Here and click on Submit'
+            uploaded_image_url = ' '
+
+    return render_template('index.html', extracted_text=extracted_text,
+                           uploaded_image_url=uploaded_image_url,
+                           prediction=text)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
