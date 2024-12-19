@@ -4,10 +4,11 @@ import io
 import base64
 from gradio_client import Client
 import requests
+from huggingface_hub import login
 
 
 app = Flask(__name__)
-
+login(token="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") 
 
 def upload_image(image_data):
 
