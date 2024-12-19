@@ -80,6 +80,7 @@ def get_output():
             text = extracted_text
             client = Client("manaidu20011/cloud")
             extracted_text = "predict"+extracted_text.replace("\n",":")
+            print(extracted_text)
             result = client.predict(command=extracted_text,api_name="/predict")
             extracted_text = result
             text= result
