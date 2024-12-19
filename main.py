@@ -51,14 +51,7 @@ def about_page():
     return 'Naidu'
 
 
-@app.route('/process_edit', methods=['POST'])
-def process_edit():
-    uploaded_image_url = request.form['uploaded_image_url']
-    extracted_text = request.form['edited_text']
-    text = extracted_text.replace("\n", "<br>")
-    return render_template('index.html', extracted_text=extracted_text,
-                           uploaded_image_url=uploaded_image_url,
-                           prediction=text)
+
 
 
 @app.route('/submit', methods=['GET', 'POST'])
