@@ -154,8 +154,8 @@ def del_data():
             client = Client("manaidu20011/cloud")
             result = client.predict(command="delete",api_name="/predict")
             extracted_text= "Data Removed"
-            prediction= extracted_text
-            uploaded_image_url= "None"
+             text = extracted_text
+            uploaded_image_url= ""
             
         except Exception as e:
             text = e
@@ -176,7 +176,7 @@ def train_data():
             client = Client("manaidu20011/cloud")
             result = client.predict(command="train",api_name="/predict")
             extracted_text= "Succesfully Trained Model"
-            prediction= extracted_text
+            text = extracted_text
             uploaded_image_url= ""
             
         except Exception as e:
