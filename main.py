@@ -174,7 +174,7 @@ def train_data():
         try:
             client = Client("manaidu20011/cloud")
             result = client.predict(command="train",api_name="/predict")
-            extracted_text= "Succesfully Trained Model"
+            extracted_text= result
             text = extracted_text
             uploaded_image_url= ""
             
